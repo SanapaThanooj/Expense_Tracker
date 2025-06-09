@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="text-center mt-5" data-aos="fade-left" data-aos-delay="300">
+    <div class="p-5  text-white rounded-4 shadow">
+        <h1 class="display-4 mb-3">Welcome to Expense Tracker</h1>
+        <p class="lead mb-4">Track your daily expenses effortlessly. Add, view, edit, and analyze your spending habits anytime, anywhere.</p>
+        <div>
+            <a asp-controller="Expenses" asp-action="Create" class="btn btn-success btn-lg me-3">Add New Expense</a>
+            <a asp-controller="Expenses" asp-action="Index" class="btn btn-success btn-lg">View All Expenses</a>
+        </div>
+    </div>
+</div>
+<h3 class="mt-5">Expense Analytics</h3>
+
+<div class="card p-4 shadow-sm" data-aos="fade-left" data-aos-delay="400">
+    <canvas id="expenseChart" height="100"></canvas>
+</div>
+
+<!-- Feature Highlights -->
+<div class="container mt-5">
+    <h2 class="text-center text-primary mb-4">Key Features</h2>
+    <div class="row text-center">
+        <div class="col-md-3 mb-4" data-aos="fade-left" data-aos-delay="200">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-success">💸 Easy Expense Entry</h5>
+                    <p class="card-text">Log your daily expenses quickly and categorize them with ease.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4" data-aos="fade-left" data-aos-delay="300">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-info">📊 Analytics Dashboard</h5>
+                    <p class="card-text">Visualize your spending with dynamic charts and graphs.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4" data-aos="fade-left" data-aos-delay="400">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-warning">📅 Date Filtering</h5>
+                    <p class="card-text">Filter expenses by day, week, or custom date ranges.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4" data-aos="fade-left" data-aos-delay="500">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-danger">☁️ Cloud Deployed</h5>
+                    <p class="card-text">Access anywhere with Azure deployment and secure storage.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // Sample data – replace with real data from your model if needed
+        const categories = ['Food', 'Travel', 'Bills', 'Shopping', 'Others'];
+        const totals = [500, 300, 200, 150, 100];
+
+        const ctx = document.getElementById('expenseChart').getContext('2d');
+        const expenseChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: categories,
+                datasets: [{
+                    label: 'Total Spent by Category',
+                    data: totals,
+                    backgroundColor: [
+                        '#007bff',
+                        '#28a745',
+                        '#ffc107',
+                        '#dc3545',
+                        '#6c757d'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+}
+

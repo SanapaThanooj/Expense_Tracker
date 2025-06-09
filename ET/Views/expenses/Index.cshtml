@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ET.Models.expense>
+
+@{
+    ViewData["Title"] = "Expense List";
+}
+
+<h2 class="mb-4">Expense Tracker</h2>
+
+<!--  Filter Form -->
+<form method="get" asp-controller="expenses" asp-action="Index" class="border rounded p-3 bg-light shadow-sm mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <label class="form-label fw-bold">Category</label>
+            <input type="text" name="category" class="form-control" placeholder="e.g. Food, Travel" value="@(Context.Request.Query["category"])" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label fw-bold">Start Date</label>
+            <input type="date" name="startDate" class="form-control" value="@(Context.Request.Query["startDate"])" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label fw-bold">End Date</label>
+            <input type="date" name="endDate" class="form-control" value="@(Context.Request.Query["endDate"])" />
+        </div>
+        <div class="col-md-3 d-flex align-items-end">
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a asp-action="Index" class="btn btn-secondary">Reset</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+<!--  Add Button -->
+<div class="mb-3">
+    <a asp-action="Create" class="btn btn-primary">Add New Expense</a>
+</div>
+
+<!-- Expense Table -->
+<table class="table table-bordered table-striped shadow-sm bg-white">
+    <thead class="table-dark">
+        <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Date</th>
+            <th>Category</th>
+            <th>Notes</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Amount</td>
+                    <td>@item.ExpenseDate.ToShortDateString()</td>
+                    <td>@item.category</td>
+                    <td>@item.Notes</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.id" class="btn btn-sm btn-warning">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.id" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.id" class="btn btn-sm btn-danger btn-delete">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">No expenses found.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/js/site.js"></script>
+}
