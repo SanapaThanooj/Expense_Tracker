@@ -1,8 +1,8 @@
-💰 Expense Tracker - ASP.NET Core MVC
+ Expense Tracker - ASP.NET Core MVC
 
 A personal finance web application built with ASP.NET Core MVC to help users track daily spending with ease. This simple yet powerful tracker allows users to record, view, edit, delete, and filter expenses with a clean, responsive interface.
 
- 🚀 Features
+  Features
 
 → Add Expense → Record new spending (title, amount, category, date, notes).
 → View Expenses → See a complete list of expenses in a tabular format.
@@ -10,7 +10,7 @@ A personal finance web application built with ASP.NET Core MVC to help users tra
 → Delete Expense → Permanently remove unwanted entries.
 → Filter Expenses → Search expenses by category or date range for better insights.
 
- 🛠️ Technologies Used
+ 🛠 Technologies Used
 
 → ASP.NET Core MVC  
 → Entity Framework Core  
@@ -19,7 +19,7 @@ A personal finance web application built with ASP.NET Core MVC to help users tra
 → Git (Version Control)  
 → Azure App Service (Optional Deployment)
 
- 🧱 Database Schema
+  Database Schema
 
 Table: `Expenses`
 
@@ -84,33 +84,33 @@ Enter title, amount, category, date, and optional notes
 
 Click Add to save
 
-📄 View Expenses
+ View Expenses
 Lists all recorded expenses in a table
 
 Each entry shows title, amount, category, date, and notes
 
-✏️ Edit Expense
+ Edit Expense
 Click Edit next to an entry
 
 Modify values
 
 Click Save to update
 
-❌ Delete Expense
+ Delete Expense
 Click Delete next to an entry
 
 Confirm deletion
 
 Click Delete again
 
-🔍 Filter Expense
+ Filter Expense
 Use category textbox or date range fields (if implemented)
 
 Click Filter
 
 Click Reset or empty filters to view all again
 
-☁️ Deployment (Azure)
+ Deployment (Azure)
 You can deploy to Azure App Service in just a few steps:
 
 Right-click the project → Publish
@@ -121,10 +121,10 @@ Create/select a resource and hit Publish
 
 Your app will be live on the web!
 
-✅ License
+ License
 This project is open-source and free to use for personal or educational purposes.
 
-👨‍💻 Author
+ Author
 SANAPA THANOOJ PRAPULLA
 Capstone Project – Personal Finance Web Application (2025)
 
